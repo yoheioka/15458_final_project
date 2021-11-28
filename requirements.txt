@@ -1,0 +1,6 @@
+Cython==0.29.24
+arrow==0.15.2
+requests==2.22.0
+mysqlclient==1.4.6
+jupyter==1.0.0
+mplfinance==0.12.7a17
