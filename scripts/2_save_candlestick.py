@@ -40,9 +40,9 @@ GRANULARITY = int(sys.argv[1])
 INSTRUMENT = sys.argv[2]
 YEAR = int(sys.argv[3])
 METRIC = 'long10'
-TRAIN_DIR = 'images3/%s_%s_%s/train/%s'
-TEST_DIR = 'images3/%s_%s_%s/test/%s'
-SAMPLE_RATE = 0.05
+TRAIN_DIR = 'images_with_volume/%s_%s_%s/train/%s'
+TEST_DIR = 'images_with_volume/%s_%s_%s/test/%s'
+SAMPLE_RATE = 0.25
 STYLE = fplt.make_mpf_style(base_mpf_style='charles', gridstyle='')
 START = arrow.get('%s-01-01 00:00:00' % YEAR)
 END = START.shift(years=1, days=5)
@@ -55,7 +55,7 @@ def render_image(df):
     year = arrow_time.year
     if arrow_time .minute == 0:
         print(arrow_time.datetime)
-    label = df[METRIC][-1]
+    label = int(df[METRIC][-1])
 
     if year != YEAR:
         return
@@ -74,6 +74,7 @@ def render_image(df):
         axisoff=True,
         figratio=(10,10),
         figscale=1,
+        volume=True,
         savefig=dict(
             fname=file,
             dpi=100,
@@ -97,8 +98,8 @@ def main():
     
     p = Pool(30)
     args = [
-        df[i - 3:i]
-        for i in range(3, len(df))
+        df[i - 9:i]
+        for i in range(9, len(df))
         if random.random() <= SAMPLE_RATE
     ]
     print('generated args')

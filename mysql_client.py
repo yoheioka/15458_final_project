@@ -17,6 +17,7 @@ CANDLES_ROW_MAPPER = [
     'bid_close',
     'bid_open',
     'bid_low',
+    'volume',
 ]
 
 CANDLES_MOVEMENT_ROW_MAPPER = [

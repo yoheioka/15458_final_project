@@ -50,6 +50,7 @@ class Oanda:
                     'ask_high': float(candle['ask']['h']),
                     'ask_low': float(candle['ask']['l']),
                     'ask_close': float(candle['ask']['c']),
+                    'volume': float(candle['volume'])
                 } for candle in candles
             ]
         return []
